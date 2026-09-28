@@ -73,25 +73,38 @@ for the implementation details.
 - **Deployment:** Cloudflare Workers
 
 ## Architecture
+## System Architecture
 
-Customer
-|
-v
-Recall Web Interface
-|
-v
-Cloudflare Worker
-|
-+----> Hindsight: recall relevant memories
-|
-+----> Groq: generate an AI response
-|
-+----> Hindsight: retain useful interaction details
-|
-v
-Response displayed to customer
+```mermaid
+flowchart TD
+    A["👤 Customer"] --> B["💻 Recall Web Interface"]
+    B --> C["☁️ Cloudflare Worker<br/>Backend API"]
 
-See [Architecture](docs/ARCHITECTURE.md) for more details.
+    C --> D["🧠 Hindsight<br/>Recall relevant memories"]
+    D --> E["🤖 Groq LLM<br/>Generate AI response"]
+    E --> F["🧠 Hindsight<br/>Retain useful interaction details"]
+    F --> G["📨 Response returned to customer"]
+    G --> B
+
+    subgraph Backend["Backend Processing"]
+        C
+        D
+        E
+        F
+    end
+
+    style A fill:#2563eb,color:#fff,stroke:#1d4ed8
+    style B fill:#0f766e,color:#fff,stroke:#115e59
+    style C fill:#7c3aed,color:#fff,stroke:#6d28d9
+    style D fill:#d97706,color:#fff,stroke:#b45309
+    style E fill:#059669,color:#fff,stroke:#047857
+    style F fill:#d97706,color:#fff,stroke:#b45309
+    style G fill:#2563eb,color:#fff,stroke:#1d4ed8
+```
+
+See [Architecture](documentation/ARCHITECTURE.md) for more details.
+
+See [Architecture](documents/ARCHITECTURE.md) for more details.
 
 ## Screenshots
 
