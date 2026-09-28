@@ -7,7 +7,7 @@ in an AI-powered customer support interaction.
 
 ## Demo Scenario
 
-A customer previously contacted support about a connectivity
+A customer previously contacted support with respective
 problem and now returns with a follow-up question.
 
 ## Walkthrough
